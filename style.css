@@ -1,0 +1,95 @@
+body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+  background-image: url("image12.jpg");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  min-height: 100vh;
+  color: white;
+}
+
+/* Header */
+header {
+  background: rgba(0, 0, 0, 0.7);
+  padding: 18px;
+  text-align: center;
+  font-size: 26px;
+  font-weight: bold;
+}
+
+/* Navbar */
+nav {
+  background: rgba(0, 0, 0, 0.6);
+  display: flex;
+  justify-content: center;
+  gap: 30px;
+  padding: 12px;
+}
+
+nav a {
+  color: white;
+  text-decoration: none;
+  font-size: 16px;
+  font-weight: bold;
+}
+
+nav a:hover {
+  color: #00c6ff;
+}
+
+/* Hero Section */
+.hero {
+  text-align: center;
+  margin-top: 120px;
+}
+
+.hero h1 {
+  font-size: 40px;
+}
+
+.hero p {
+  font-size: 18px;
+}
+
+/* Glass Card */
+.card {
+  background: rgba(255, 255, 255, 0.15);
+  backdrop-filter: blur(10px);
+  max-width: 450px;
+  margin: 50px auto;
+  padding: 25px;
+  border-radius: 16px;
+  box-shadow: 0 0 25px rgba(0,0,0,0.4);
+}
+
+/* Inputs */
+input, select, textarea {
+  width: 100%;
+  padding: 10px;
+  margin: 10px 0;
+  border-radius: 8px;
+  border: none;
+  outline: none;
+  font-size: 15px;
+}
+
+/* Button */
+button {
+  background: linear-gradient(135deg, #0b5ed7, #00c6ff);
+  color: white;
+  padding: 12px;
+  border: none;
+  width: 100%;
+  font-size: 16px;
+  border-radius: 10px;
+  cursor: pointer;
+  margin-top: 10px;
+  transition: 0.3s;
+}
+
+button:hover {
+  transform: scale(1.03);
+  background: linear-gradient(135deg, #084298, #0094cc);
+}

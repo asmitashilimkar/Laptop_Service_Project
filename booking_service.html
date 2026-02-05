@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Book Service</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<header>Book a Service</header>
+
+<nav>
+  <a href="index.html">Home</a>
+  <a href="booking_service.html">Book Service</a>
+  <a href="review.html">Customer Reviews</a>
+</nav>
+
+<section class="card">
+  <h2>Service Request</h2>
+
+  <form id="bookingForm">
+    <input type="text" id="name" placeholder="Full Name" required>
+    <input type="tel" id="mobile" placeholder="Mobile Number" required>
+    <input type="email" id="email" placeholder="Email" required>
+
+    <select id="service" required>
+      <option value="">Select Service</option>
+      <option>Laptop Repair & Service</option>
+      <option>Desktop Repair & Service</option>
+      <option>Windows Installation & Formatting</option>
+      <option>SSD & RAM Upgrade</option>
+      <option>Virus Removal & Data Backup</option>
+      <option>Printer Repair & Installation</option>
+      <option>CCTV Installation & Support</option>
+    </select>
+
+    <textarea id="issue" rows="4" placeholder="Describe your issue"></textarea>
+
+    <button type="submit">Submit Request</button>
+  </form>
+</section>
+
+<script>
+
+document.getElementById("bookingForm").addEventListener("submit", function(e) {
+  e.preventDefault();
+
+  fetch("http://localhost:8080/api/service/request", {  // ✅ Correct URL
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({
+      customerName: document.getElementById("name").value,
+      phone: document.getElementById("mobile").value,
+      email: document.getElementById("email").value,
+      serviceType: document.getElementById("service").value,
+      description: document.getElementById("issue").value
+    })
+  })
+  .then(res => {
+    if(res.ok) {
+      alert("Service Request Saved Successfully ✅");
+      document.getElementById("bookingForm").reset();
+    } else {
+      alert("Error saving data ❌");
+    }
+  })
+  .catch(err => console.error(err));
+});
+
+</script>
+
+</body>
+</html>

@@ -1,0 +1,22 @@
+<h2>⭐ Manage Reviews</h2>
+<div id="adminReviews"></div>
+
+<script>
+fetch("http://localhost:8080/api/reviews")
+.then(res => res.json())
+.then(data => {
+  const div = document.getElementById("adminReviews");
+  data.forEach(r => {
+    div.innerHTML += `
+      <div>
+        <b>${r.name}</b> (${r.rating}⭐) - ${r.message}
+        <button onclick="deleteReview(${r.id})">Delete</button>
+      </div>`;
+  });
+});
+
+function deleteReview(id) {
+  fetch(`http://localhost:8080/api/reviews/${id}`, { method: "DELETE" })
+    .then(() => location.reload());
+}
+</script>

@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Customer Reviews</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<header>Customer Reviews</header>
+
+<nav>
+  <a href="index.html">Home</a>
+  <a href="booking_service.html">Book Service</a>
+  <a href="review.html">Customer Reviews</a>
+</nav>
+
+<section class="card">
+  <h2>Leave a Review</h2>
+
+  <form id="reviewForm">
+    <input type="text" id="rname" placeholder="Your Name" required>
+
+    <select id="rating" required>
+      <option value="">Rating</option>
+      <option>⭐⭐⭐⭐⭐ Excellent</option>
+      <option>⭐⭐⭐⭐ Very Good</option>
+      <option>⭐⭐⭐ Good</option>
+      <option>⭐⭐ Average</option>
+      <option>⭐ Poor</option>
+    </select>
+
+    <textarea id="message" rows="4" placeholder="Write your review"></textarea>
+
+    <button type="submit">Submit Review</button>
+  </form>
+</section>
+
+<script>
+document.getElementById("reviewForm").addEventListener("submit", function(e) {
+  e.preventDefault();
+
+  fetch("http://localhost:8080/review", {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({
+      name: document.getElementById("rname").value,
+      rating: document.getElementById("rating").value,
+      message: document.getElementById("message").value
+    })
+  })
+  .then(res => {
+    if(res.ok) {
+      alert("Review Saved Successfully ✅");
+      document.getElementById("reviewForm").reset();
+    } else {
+      alert("Error saving review ❌");
+    }
+  });
+});
+</script>
+
+</body>
+</html>
